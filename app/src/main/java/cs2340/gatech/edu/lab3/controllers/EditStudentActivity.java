@@ -15,6 +15,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import cs2340.gatech.edu.lab3.R;
+import cs2340.gatech.edu.lab3.model.ClassStanding;
 import cs2340.gatech.edu.lab3.model.Model;
 import cs2340.gatech.edu.lab3.model.Student;
 
@@ -26,6 +27,7 @@ public class EditStudentActivity extends AppCompatActivity implements AdapterVie
     private TextView idField;
     private EditText nameField;
     private Spinner majorSpinner;
+    private Spinner standingSpinner;
 
     /* ************************
        Keeping track of spinner changes.  Not really used right now, probably don't need this.
@@ -64,13 +66,20 @@ public class EditStudentActivity extends AppCompatActivity implements AdapterVie
         nameField = (EditText) findViewById(R.id.student_name_input);
         majorSpinner = (Spinner) findViewById(R.id.spinner);
         idField = (TextView) findViewById(R.id.student_id_field);
+        standingSpinner = (Spinner) findViewById(R.id.standingSpinner);
 
         /*
           Set up the adapter to display the allowable majors in the spinner
          */
-        ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, Student.legalMajors);
+        ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, ClassStanding.values());
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         majorSpinner.setAdapter(adapter);
+    /*
+          Set up the adapter to display the allowable majors in the spinner
+         */
+        ArrayAdapter<String> adapter2 = new ArrayAdapter(this,android.R.layout.simple_spinner_item, Student.legalMajors);
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        standingSpinner.setAdapter(adapter2);
 
         /*
            If a student has been passed in, this was an edit, if not, this is a new add
