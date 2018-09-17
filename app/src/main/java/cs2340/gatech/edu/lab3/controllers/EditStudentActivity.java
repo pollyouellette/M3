@@ -75,7 +75,7 @@ public class EditStudentActivity extends AppCompatActivity implements AdapterVie
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         majorSpinner.setAdapter(adapter);
     /*
-          Set up the adapter to display the allowable majors in the spinner
+          Set up the adapter to display the allowable class standings in the spinner
          */
         ArrayAdapter<String> adapter2 = new ArrayAdapter(this,android.R.layout.simple_spinner_item, ClassStanding.values());
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
