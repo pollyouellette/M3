@@ -71,13 +71,13 @@ public class EditStudentActivity extends AppCompatActivity implements AdapterVie
         /*
           Set up the adapter to display the allowable majors in the spinner
          */
-        ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, ClassStanding.values());
+        ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, Student.legalMajors);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         majorSpinner.setAdapter(adapter);
     /*
           Set up the adapter to display the allowable majors in the spinner
          */
-        ArrayAdapter<String> adapter2 = new ArrayAdapter(this,android.R.layout.simple_spinner_item, Student.legalMajors);
+        ArrayAdapter<String> adapter2 = new ArrayAdapter(this,android.R.layout.simple_spinner_item, ClassStanding.values());
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         standingSpinner.setAdapter(adapter2);
 
@@ -87,6 +87,7 @@ public class EditStudentActivity extends AppCompatActivity implements AdapterVie
         if (getIntent().hasExtra(CourseDetailFragment.ARG_STUDENT_ID)) {
             _student = (Student) getIntent().getParcelableExtra(CourseDetailFragment.ARG_STUDENT_ID);
             majorSpinner.setSelection(Student.findPosition(_student.getMajor()));
+            standingSpinner.setSelection(Student.findPosition(_student.getClassStanding()));
             editing = true;
         } else {
             _student = new Student();
@@ -108,6 +109,7 @@ public class EditStudentActivity extends AppCompatActivity implements AdapterVie
 
         _student.setName(nameField.getText().toString());
         _student.setMajor((String) majorSpinner.getSelectedItem());
+        _student.setClassStanding((ClassStanding) standingSpinner.getSelectedItem());
 
         Log.d("Edit", "Got new student data: " + _student);
         if (!editing) {

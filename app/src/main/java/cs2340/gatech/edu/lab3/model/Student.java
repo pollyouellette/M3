@@ -34,7 +34,7 @@ public class Student implements Parcelable {
     private String _major;
 
     /** this students class standing */
-    private Enum _classStanding;
+    private static Enum _classStanding;
 
 
     /* **********************
@@ -64,6 +64,18 @@ public class Student implements Parcelable {
             ++i;
         }
         return 0;
+    }
+
+    public static int findPosition(Enum standing) {
+        if (standing == ClassStanding.FRESHMAN) {
+            return 0;
+        } else if (standing == ClassStanding.SOPHOMORE) {
+            return 1;
+        } else if (standing == ClassStanding.JUNIOR) {
+            return 2;
+        } else {
+            return 3;
+        }
     }
 
 
@@ -131,7 +143,7 @@ public class Student implements Parcelable {
         _classStanding = (ClassStanding) in.readSerializable();
     }
 
-    public Enum getClassStanding() {
+    public static Enum getClassStanding() {
         return _classStanding;
     }
 

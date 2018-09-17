@@ -25,9 +25,8 @@
         android:id="@+id/spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="160dp" />
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView2" />
 
     <Button
         android:id="@+id/cancel_button"
@@ -81,8 +80,7 @@
         android:id="@+id/standingSpinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="199dp" />
+        android:layout_below="@+id/textClassStanding"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
